@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, CheckCircle2, AlertCircle, Upload, User, Check } from "lucide-react";
 import logo from "@/assets/logo.png";
-import SmileLiveness, { isSmileConfigured } from "@/components/guarantor/SmileLiveness";
+import SmileLiveness, { resolveSmileConfig } from "@/components/guarantor/SmileLiveness";
 import {
   GuarantorApiError,
   declineUndertaking,
@@ -623,13 +623,11 @@ const GuarantorForm = () => {
               {liveness ? (
                 <div className="space-y-4">
                   <SmileLiveness
-                    reference={liveness.reference}
-                    idType={liveness.id_type}
-                    idNumber={liveness.id_number}
+                    liveness={liveness}
                     onCaptured={waitForLiveness}
                     onError={setNotice}
                   />
-                  {!isSmileConfigured && (
+                  {!resolveSmileConfig(liveness).ready && (
                     <GhostButton onClick={waitForLiveness}>Check verification status</GhostButton>
                   )}
                   {waiting === "liveness" && (

@@ -48,6 +48,13 @@ export interface LivenessInitiateResult {
   id_type: string;
   id_number: string;
   progress: GuarantorProgress;
+  /** Smile ID web token from the backend (get_web_token). Required to open the camera. */
+  token?: string;
+  /** Optional overrides; otherwise taken from VITE_SMILE_* env vars. */
+  partner_id?: string;
+  callback_url?: string;
+  environment?: string;
+  product?: string;
 }
 
 export class GuarantorApiError extends Error {
