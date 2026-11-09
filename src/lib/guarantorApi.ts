@@ -43,14 +43,27 @@ export interface GuarantorDetails {
   home_address: string;
 }
 
+export interface SmileLaunchConfig {
+  token: string;
+  partner_id?: string;
+  environment?: string;
+  product?: string;
+  callback_url?: string;
+  country?: string;
+  job_id?: string;
+  id_info?: Record<string, unknown>;
+  consent_required?: Record<string, string[]>;
+}
+
 export interface LivenessInitiateResult {
   reference: string;
   id_type: string;
   id_number: string;
   progress: GuarantorProgress;
-  /** Smile ID web token from the backend (get_web_token). Required to open the camera. */
+  /** Smile ID launch settings minted by the backend (web token etc.). */
+  smile?: SmileLaunchConfig;
+  /** Legacy flat fields, used only if `smile` is absent. */
   token?: string;
-  /** Optional overrides; otherwise taken from VITE_SMILE_* env vars. */
   partner_id?: string;
   callback_url?: string;
   environment?: string;

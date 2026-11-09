@@ -4,12 +4,13 @@ import type { LivenessInitiateResult } from "@/lib/guarantorApi";
 /**
  * Smile ID hosted Web Integration for guarantor liveness.
  *
- * Flow: POST liveness/initiate returns a reference (and a Smile web token).
+ * Flow: POST liveness/initiate returns a reference plus a `smile` object holding
+ * the backend-minted Smile web token and launch settings.
  * The SDK captures the selfie and submits it directly to Smile ID, using the
  * reference as job_id/user_id. Smile then notifies the loan service by webhook,
  * and the parent page polls the guarantor endpoint for `liveness_passed`.
  *
- * Settings come from the initiate response first, then from env vars:
+ * Settings come from the initiate response (`smile.*`) first, then from env vars:
  *   token          — required; the backend generates it with Smile's get_web_token
  *   partner_id     — VITE_SMILE_PARTNER_ID
  *   callback_url   — optional, VITE_SMILE_CALLBACK_URL; the backend already receives Smile's callback
@@ -25,13 +26,20 @@ const ENV = {
 const SDK_SRC = "https://cdn.smileidentity.com/inline/v1/js/script.min.js";
 
 export const resolveSmileConfig = (liveness: LivenessInitiateResult) => {
+  const smile = liveness.smile;
+  const jobId = smile?.job_id ?? liveness.reference;
+  const country = smile?.country ?? "NG";
   const config = {
-    // Backend says the initiate reference doubles as the Smile web token.
-    token: liveness.token ?? liveness.reference,
-    partnerId: liveness.partner_id ?? ENV.partnerId,
-    callbackUrl: liveness.callback_url ?? ENV.callbackUrl,
-    environment: liveness.environment ?? ENV.environment,
-    product: liveness.product ?? "biometric_kyc",
+    // Smile web token minted by the backend. Must be a signed JWT (a.b.c).
+    token: smile?.token ?? liveness.token,
+    partnerId: smile?.partner_id ?? liveness.partner_id ?? ENV.partnerId,
+    callbackUrl: smile?.callback_url ?? liveness.callback_url ?? ENV.callbackUrl,
+    environment: smile?.environment ?? liveness.environment ?? ENV.environment,
+    product: smile?.product ?? liveness.product ?? "biometric_kyc",
+    country,
+    idType: liveness.id_type,
+    consentRequired: smile?.consent_required,
+    partnerParams: { job_id: jobId, user_id: jobId, job_type: 1 },
   };
   const missing = [
     !config.token && "token",
@@ -61,8 +69,8 @@ type SmileConfig = {
     theme_color: string;
   };
   id_selection?: Record<string, string[]>;
-  user_id?: string;
-  job_id?: string;
+  consent_required?: Record<string, string[]>;
+  partner_params?: Record<string, unknown>;
   onSuccess?: () => void;
   onClose?: () => void;
   onError?: (err: unknown) => void;
@@ -115,10 +123,9 @@ const SmileLiveness = ({ liveness, onCaptured, onError, onClose }: Props) => {
           policy_url: "https://mypennytree.com/privacy",
           theme_color: "#0F7B53",
         },
-        id_selection:
-          liveness.id_type && liveness.id_number ? { NG: [liveness.id_type] } : undefined,
-        user_id: liveness.reference,
-        job_id: liveness.reference,
+        id_selection: config.idType ? { [config.country]: [config.idType] } : undefined,
+        ...(config.consentRequired ? { consent_required: config.consentRequired } : {}),
+        partner_params: config.partnerParams,
         onSuccess: () => {
           mounted.current = false;
           onCaptured();
