@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
-import ComplianceBar from "@/components/ComplianceBar";
 import Footer from "@/components/Footer";
 import { TrendingUp, Shield, Users, Download, Eye, BarChart3, Target, Clock } from "lucide-react";
 
@@ -41,7 +40,6 @@ const Investors = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <ComplianceBar />
       
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-gradient-subtle">

@@ -1,5 +1,4 @@
 import Navigation from '@/components/Navigation';
-import ComplianceBar from '@/components/ComplianceBar';
 import Footer from '@/components/Footer';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
@@ -26,7 +25,6 @@ const Bullets = ({ items }: { items: string[] }) => (
 const Privacy = () => {
   return (
     <>
-      <ComplianceBar />
       <Navigation />
       <main>
         <section className="page-header py-16 bg-gradient-to-br from-gray-50 to-white">

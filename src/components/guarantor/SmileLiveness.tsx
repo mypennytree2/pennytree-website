@@ -120,7 +120,7 @@ const SmileLiveness = ({ liveness, onCaptured, onError, onClose }: Props) => {
           partner_id: config.partnerId as string,
           name: "PennyTree Technologies",
           logo_url: "https://mypennytree.com/favicon-pt-v6.png",
-          policy_url: "https://mypennytree.com/privacy",
+          policy_url: "https://mypennytree.com/policy",
           theme_color: "#0F7B53",
         },
         id_selection: config.idType ? { [config.country]: [config.idType] } : undefined,

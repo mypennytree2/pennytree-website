@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
-import ComplianceBar from "@/components/ComplianceBar";
 import Footer from "@/components/Footer";
 import { Building2, Users, Target, Heart, Award, Globe, Briefcase, TrendingUp, DollarSign, Cpu, Shield, Smartphone, Play } from "lucide-react";
 import ayoImage from "@/assets/ayo-ogunlowo.png";
@@ -84,7 +83,6 @@ const Business = () => {
   }];
   return <div className="min-h-screen bg-background">
       <Navigation />
-      <ComplianceBar />
       
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-gradient-subtle">

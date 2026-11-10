@@ -50,7 +50,7 @@ const Footer = () => {
               <li><Link to="/security" className="text-sm text-background/60 hover:text-primary transition-colors">Security</Link></li>
               <li><Link to="/investors" className="text-sm text-background/60 hover:text-primary transition-colors">Investors</Link></li>
               <li><Link to="/terms" className="text-sm text-background/60 hover:text-primary transition-colors">Terms & Conditions</Link></li>
-              <li><Link to="/privacy" className="text-sm text-background/60 hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/policy" className="text-sm text-background/60 hover:text-primary transition-colors">Privacy Policy</Link></li>
               <li><Link to="/loan-terms" className="text-sm text-background/60 hover:text-primary transition-colors">Loan Terms</Link></li>
               <li><Link to="/target-savings-terms" className="text-sm text-background/60 hover:text-primary transition-colors">Target Savings Terms</Link></li>
               <li><Link to="/referall-terms" className="text-sm text-background/60 hover:text-primary transition-colors">Referral Terms</Link></li>
