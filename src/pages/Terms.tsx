@@ -239,7 +239,7 @@ const Terms = () => {
                     Address: Victoria Island, Lagos, Nigeria<br />
                     Website: www.mypennytree.com
                   </Callout>
-                  <p className="text-sm text-muted-foreground/70">© 2026 PennyTree Technologies Business Limited. All rights reserved. CBN-Licensed Microfinance Bank.</p>
+                  <p className="text-sm text-muted-foreground/70">© {new Date().getFullYear()} PennyTree Technologies Business Limited. All rights reserved. CBN-Licensed Microfinance Bank.</p>
                 </Section>
           </div>
         </section>

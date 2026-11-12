@@ -288,7 +288,7 @@ const PersonalVaultTerms = () => {
             </div>
 
             <p className="text-center text-xs text-muted-foreground pt-4">
-              © 2025 PennyTree Technologies Business Ltd. All rights reserved. • Personal Vault T&C v1.0 • May 2025
+              © {new Date().getFullYear()} PennyTree Technologies Business Ltd. All rights reserved. • Personal Vault T&C v1.0 • May 2025
             </p>
           </div>
         </section>

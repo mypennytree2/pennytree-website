@@ -140,6 +140,21 @@ const GhostButton = ({
   </button>
 );
 
+// Expiry comes from the API (14 days while testing, 48 hours at launch), so never hard-code it.
+const formatExpiry = (iso?: string | null) => {
+  if (!iso) return null;
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat("en-NG", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).format(date);
+};
+
 const GuarantorForm = () => {
   const { token = "" } = useParams();
   const [screen, setScreen] = useState<Screen>({ kind: "loading" });
@@ -394,7 +409,7 @@ const GuarantorForm = () => {
       expired: {
         icon: <AlertCircle className="h-9 w-9" />,
         title: "This link has expired",
-        body: "Guarantor links stay open for 14 days. Please ask the borrower to send you a new one.",
+        body: "This guarantor link is no longer valid. Please ask the borrower to send you a new one.",
       },
       declined: {
         icon: <CheckCircle2 className="h-9 w-9" />,
@@ -794,8 +809,8 @@ const GuarantorForm = () => {
           </GhostButton>
           <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
             Declining does not reject the application — {inv.borrower_name} will be asked to nominate
-            someone else. Need help? Email support@mypennytree.com. This link expires 14 days after
-            it was sent.
+            someone else. Need help? Email support@mypennytree.com.
+            {formatExpiry(inv.expires_at) && ` This link expires on ${formatExpiry(inv.expires_at)}.`}
           </p>
         </div>
       </div>

@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 import appScreenshot from "@/assets/pennytree-app-screenshot.png";
-import cbnLogo from "@/assets/cbn-logo.webp";
 import secLogo from "@/assets/sec-logo.svg";
 
 const fadeInUp = {
@@ -84,11 +83,7 @@ const Home = () => {
   ];
 
   const regulatoryLogos = [
-    { src: cbnLogo, alt: "Central Bank of Nigeria" },
-
-    { src: cbnLogo, alt: "Central Bank of Nigeria" },
-
-    { src: cbnLogo, alt: "Central Bank of Nigeria" }
+    { src: secLogo, alt: "Securities and Exchange Commission of Nigeria" },
   ];
 
   const floatingCards = [
@@ -176,7 +171,7 @@ const Home = () => {
                 className="flex flex-wrap items-center gap-4 mt-8"
               >
                 {[
-                  { icon: <Shield className="h-3.5 w-3.5" />, text: "CBN Regulated" },
+                  { icon: <Shield className="h-3.5 w-3.5" />, text: "SEC Regulated" },
                   { icon: <Lock className="h-3.5 w-3.5" />, text: "Secure Transfers" },
                   { icon: <Users className="h-3.5 w-3.5" />, text: "10k+ Users" },
                 ].map((badge) => (
@@ -574,7 +569,7 @@ const Home = () => {
             {[
               { icon: <DollarSign className="h-8 w-8" />, value: "Free", label: "Transfers", description: "Send money to anyone at zero cost" },
               { icon: <BarChart3 className="h-8 w-8" />, value: "27%", label: "PA Returns", description: "Earn up to 27% per annum on Naira Vault" },
-              { icon: <Shield className="h-8 w-8" />, value: "CBN", label: "Regulated", description: "Licensed & regulated by CBN and SEC" },
+              { icon: <Shield className="h-8 w-8" />, value: "SEC", label: "Regulated", description: "Licensed & regulated by the Securities and Exchange Commission of Nigeria" },
               { icon: <Smartphone className="h-8 w-8" />, value: "24/7", label: "Mobile Access", description: "Bank anytime, anywhere from your phone" },
             ].map((item, index) => (
               <motion.div

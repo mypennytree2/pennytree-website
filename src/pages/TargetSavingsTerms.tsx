@@ -322,7 +322,7 @@ const TargetSavingsTerms = () => {
             </Section>
 
             <p className="text-center text-xs text-muted-foreground pt-4">
-              © 2025 PennyTree Technologies Business Ltd. All rights reserved. • Personal Target Savings T&C
+              © {new Date().getFullYear()} PennyTree Technologies Business Ltd. All rights reserved. • Personal Target Savings T&C
             </p>
           </div>
         </section>

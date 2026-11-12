@@ -14,7 +14,7 @@ const Footer = () => {
               <span className="text-xl font-bold text-background">PennyTree Technologies</span>
             </div>
             <p className="text-sm leading-relaxed text-background/60">
-              A modern financial platform for payments, savings, business accounts, and investment opportunities. Licensed by CBN.
+              A modern financial platform for payments, savings, business accounts, and investment opportunities. Licensed by SEC.
             </p>
             <div className="flex gap-3">
               <Button size="sm" className="bg-primary text-foreground hover:bg-primary/90 rounded-full font-semibold px-5 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300" asChild>
@@ -71,7 +71,7 @@ const Footer = () => {
                   +234 815 284 6097
                 </a>
               </li>
-              <li>No 37, Lagos road epe, Lagos state</li>
+              <li>7th Floor, Plot 634, Adeyemo Alakija Street, Victoria Island, Lagos, Nigeria.</li>
             </ul>
             <div className="flex space-x-4 mt-4">
               <a href="#" className="text-background/60 hover:text-primary transition-colors text-sm">Twitter</a>
@@ -82,9 +82,9 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-background/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-background/40">© 2025 PennyTree Technologies. All rights reserved.</p>
+          <p className="text-sm text-background/40">© {new Date().getFullYear()} PennyTree Technologies. All rights reserved.</p>
           <p className="text-xs text-background/30">
-            Licensed by Central Bank of Nigeria 
+            Licensed by Securities and Exchange Commission of Nigeria 
           </p>
         </div>
       </div>

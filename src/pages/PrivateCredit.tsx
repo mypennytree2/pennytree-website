@@ -464,7 +464,7 @@ const PCFooter = () => {
           ))}
         </div>
         <div className="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs" style={{ borderColor: colors.mist, color: colors.slate }}>
-          <span>© 2026 PennyTree Technologies Business Limited. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} PennyTree Technologies Business Limited. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:opacity-70">Terms</a>
             <a href="#" className="hover:opacity-70">Privacy</a>

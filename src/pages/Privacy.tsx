@@ -237,7 +237,7 @@ const Privacy = () => {
                 Website: www.mypennytree.com
               </Callout>
               <p>You also have the right to lodge a complaint with the Nigeria Data Protection Commission (NDPC) at www.ndpc.gov.ng if you believe we have not handled your data appropriately.</p>
-              <p className="text-sm text-muted-foreground/70">© 2026 PennyTree Technologies Business Limited. All rights reserved. CBN-Licensed Microfinance Bank.</p>
+              <p className="text-sm text-muted-foreground/70">© {new Date().getFullYear()} PennyTree Technologies Business Limited. All rights reserved. CBN-Licensed Microfinance Bank.</p>
             </Section>
           </div>
         </section>
